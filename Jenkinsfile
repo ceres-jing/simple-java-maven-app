@@ -1,7 +1,6 @@
 pipeline {
     agent any
-
-//    tools {
+//    {
 //        docker {
 //            image 'maven:3.9.5-eclipse-temurin-17-alpine'
 //            args '-v /root/.m2:/root/.m2'
@@ -35,10 +34,10 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') {
-            steps {
-                sh './jenkins/scripts/deliver.sh'
-            }
+//        stage('Deliver') {
+//            steps {
+//                sh './jenkins/scripts/deliver.sh'
+//            }
         }
     }
 }
