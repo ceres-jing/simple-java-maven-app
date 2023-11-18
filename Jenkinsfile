@@ -14,6 +14,15 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    withSonarQubeEnv('sonarqube') {
+                        sh "${tool('sonar-scanner')}/bin/sonar-scanner -Dsonar.projectKey=myProjectKey -Dsonar.projectName=myProjectName"
+                    }
+                }
+            }
+        }
         stage('Test') {
             steps {
                 sh 'mvn test'
