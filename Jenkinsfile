@@ -1,11 +1,5 @@
 pipeline {
     agent any
-//    {
-//        docker {
-//            image 'maven:3.9.5-eclipse-temurin-17-alpine'
-//            args '-v /root/.m2:/root/.m2'
-//        }
-//    }
     options {
         skipStagesAfterUnstable()
     }
@@ -27,7 +21,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'mvn test -f pom.xml'
             }
             post {
                 always {
