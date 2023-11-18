@@ -1,10 +1,12 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.9.5-eclipse-temurin-17-alpine'
-            args '-v /root/.m2:/root/.m2'
-        }
-    }
+    agent any
+
+//    tools {
+//        docker {
+//            image 'maven:3.9.5-eclipse-temurin-17-alpine'
+//            args '-v /root/.m2:/root/.m2'
+//        }
+//    }
     options {
         skipStagesAfterUnstable()
     }
@@ -14,15 +16,15 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
-        stage('SonarQube Analysis') {
-            steps {
-                script {
-                    withSonarQubeEnv('sonarqube') {
-                        sh "${tool('sonar-scanner')}/bin/sonar-scanner -Dsonar.projectKey=myProjectKey -Dsonar.projectName=myProjectName"
-                    }
-                }
-            }
-        }
+//        stage('SonarQube Analysis') {
+//            steps {
+  //              script {
+    //                withSonarQubeEnv('sonarqube') {
+      //                  sh "${tool('sonar-scanner')}/bin/sonar-scanner -Dsonar.projectKey=myProjectKey -Dsonar.projectName=myProjectName"
+        //            }
+          //      }
+//            }
+//        }
         stage('Test') {
             steps {
                 sh 'mvn test'
