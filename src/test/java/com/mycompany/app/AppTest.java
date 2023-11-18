@@ -22,10 +22,10 @@ public class AppTest
         App app = new App();
         assertEquals("Hello World!", app.getMessage());
     }
-    @Test
-    public void testFailure()
-    {
-        App app = new App();
-        assertEquals("", app.getMessage());
-    }
+//    @Test
+//    public void testFailingTest()
+//    {
+//        App app = new App();
+//        assertEquals("", app.getMessage());
+//    }
 }
