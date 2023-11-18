@@ -29,6 +29,13 @@ pipeline {
                 }
             }
         }
+        stage("Quality Gate") {
+            steps {
+              timeout(time: 1, unit: 'HOURS') {
+                waitForQualityGate abortPipeline: true
+              }
+            }
+          }
 //        stage('Deliver') {
 //            steps {
 //                sh './jenkins/scripts/deliver.sh'
